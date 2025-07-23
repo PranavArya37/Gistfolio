@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Pranav's Gistfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container fade-transition">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Gist Index</h2>
+      <input type="text" id="search-gist" placeholder="🔍 Search gists..." />
+
+      <ul id="gist-list">
+        <li><a href="#rename-images">🖼️ Rename Image Filenames</a></li>
+        <li><a href="#hugo-config">⚙️ Hugo PaperMod Config</a></li>
+        <li><a href="#cli-tools">💻 Beautiful CLI Tools</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <div class="title-and-toggle">
+          <h1>Pranav Arya's Gist Library</h1>
+          <button id="theme-toggle">🌞 Toggle Dark Mode</button>
+        </div>
+        <p>Explore useful code snippets, tools, and configurations I've shared on GitHub Gists.</p>
+      </header>
+
+      <section class="gist-block" id="rename-images">
+        <h2>🖼️ Rename Messy Image Filenames</h2>
+        <script src="https://gist.github.com/PranavArya37/21716a062df5986981d63bacad3dd17c.js"></script>
+      </section>
+
+      <section class="gist-block" id="hugo-config">
+        <h2>⚙️ Hugo PaperMod Config Explained</h2>
+        <script src="https://gist.github.com/PranavArya37/bcd131c18e1e79f74b8d184d518dac6e.js"></script>
+      </section>
+
+      <section class="gist-block" id="cli-tools">
+        <h2>💻 Beautiful npm Packages for CLI</h2>
+        <script src="https://gist.github.com/PranavArya37/50a98110c237105a6dae473f520df257.js"></script>
+      </section>
+
+      <footer>
+        <p>
+          Made with ❤️ by Pranav Arya |
+          <a href="https://github.com/PranavArya37" target="_blank">🐙 GitHub</a> |
+          <a href="https://pranavarya.in" target="_blank">🌐 Website</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      const body = document.body;
+      body.classList.add('fade-transition'); // add fade effect
+      body.classList.toggle('dark-mode');
+      toggleBtn.textContent =
+        body.classList.contains('dark-mode') ? '🌙 Toggle Light Mode' : '🌞 Toggle Dark Mode';
+    });
+
+    // Search Filter Logic
+    const searchInput = document.getElementById('search-gist');
+    const gistList = document.getElementById('gist-list');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const items = gistList.getElementsByTagName('li');
+
+      Array.from(items).forEach((li) => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
